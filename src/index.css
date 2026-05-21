@@ -1,0 +1,241 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 221 94% 54%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 94% 54%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white bg-opacity-70 backdrop-blur-md border border-white border-opacity-20 shadow-glass;
+  }
+  
+  .premium-card {
+    @apply bg-white rounded-xl shadow-card transition-all duration-300 hover:shadow-hover;
+  }
+  
+  .link-underline {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-[...]
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-hover;
+  }
+  
+  .page-transition {
+    @apply animate-fade-in;
+  }
+  
+  .appear {
+    @apply opacity-0;
+    animation: appear 0.5s forwards;
+    animation-delay: calc(var(--delay) * 0.1s);
+  }
+
+  .ai-pill {
+    position: relative;
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  .ai-pill::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 0.5rem;
+    padding: 1.5px;
+    background: linear-gradient(135deg, #1B65F8, #00DCFF, #1B65F8, #00DCFF);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-pill:hover {
+    border-color: transparent;
+    box-shadow: 0 0 16px rgba(27, 101, 248, 0.25), 0 0 6px rgba(0, 220, 255, 0.2);
+    color: #1B65F8;
+  }
+
+  .ai-pill:hover::before {
+    opacity: 1;
+    animation: gradient-rotate 2s linear infinite;
+  }
+
+  .ai-thinking-bubble {
+    position: relative;
+    background: linear-gradient(135deg, #1B65F8, #00DCFF, #1B65F8, #00DCFF);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-rotate 2s linear infinite;
+    border: 1px solid transparent;
+  }
+
+  .ai-thinking-bubble::before {
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    border-radius: 0.5rem;
+    padding: 1.5px;
+    background: linear-gradient(135deg, #1B65F8, #00DCFF, #1B65F8, #00DCFF);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 1;
+    animation: gradient-rotate 2s linear infinite;
+  }
+
+  .ai-fab {
+    position: relative;
+  }
+
+  .ai-fab::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 9999px;
+    padding: 2px;
+    background: linear-gradient(135deg, #1B65F8, #00DCFF, #1B65F8, #00DCFF);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-fab:hover {
+    box-shadow: 0 0 20px rgba(27, 101, 248, 0.4), 0 0 8px rgba(0, 220, 255, 0.3);
+    transform: scale(1.08);
+  }
+
+  .ai-fab:hover::before {
+    opacity: 1;
+    animation: gradient-rotate 2s linear infinite;
+  }
+
+  @keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nested unordered list bullet styles */
+.prose ul { list-style-type: disc; }
+.prose ul ul { list-style-type: circle; }
+.prose ul ul ul { list-style-type: square; }
+
+/* Nested ordered list numbering styles */
+.prose ol { list-style-type: decimal; }
+.prose ol ol { list-style-type: lower-alpha; }
+.prose ol ol ol { list-style-type: lower-roman; }
+
+/* TipTap editor nested list styles */
+.tiptap ul { list-style-type: disc; padding-left: 1.5em; }
+.tiptap ul ul { list-style-type: circle; }
+.tiptap ul ul ul { list-style-type: square; }
+
+.tiptap ol { list-style-type: decimal; padding-left: 1.5em; }
+.tiptap ol ol { list-style-type: lower-alpha; }
+.tiptap ol ol ol { list-style-type: lower-roman; }
+
+.tiptap table { border-collapse: collapse; width: 100%; margin: 0.5em 0; }
+.tiptap table td, .tiptap table th { border: 1px solid hsl(var(--border)); padding: 0.4em 0.6em; min-width: 60px; vertical-align: top; }
+.tiptap table th { background: hsl(var(--muted)); font-weight: 600; }
+.tiptap table .selectedCell { background: hsl(var(--accent)); }
